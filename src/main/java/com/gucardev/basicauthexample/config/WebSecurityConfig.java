@@ -46,7 +46,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests(auth -> {
                     auth.antMatchers("/api/admin").hasAuthority("ADMIN");
                     auth.antMatchers("/api/user").hasAnyAuthority("ADMIN", "USER");
-                    auth.antMatchers("/api/public", "/login", "/h2-console/**").permitAll();
+                    auth.antMatchers("/api/public", "/h2-console/**").permitAll();
                     auth.anyRequest().authenticated();
                 })
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)

@@ -11,19 +11,14 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 public class HomeController {
 
-    @GetMapping
-    public String home() {
-        return "home";
-    }
-
     @GetMapping("/public")
     public String publicEndpoint() {
         return "public";
     }
 
-    @GetMapping("/test")
+    @GetMapping("/auth-required")
     public String testEndpoint() {
-        return "test";
+        return "auth-required";
     }
 
     @GetMapping("/user")
@@ -36,5 +31,9 @@ public class HomeController {
         return "admin";
     }
 
+    @GetMapping("/me")
+    public String admin(Authentication authentication) {
+        return String.format("User: %s, Role: %s", authentication.getName(), authentication.getAuthorities().toString());
+    }
 
 }

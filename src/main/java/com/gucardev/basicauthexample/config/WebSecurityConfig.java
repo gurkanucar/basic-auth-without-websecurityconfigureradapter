@@ -40,11 +40,12 @@ public class WebSecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http
+                .headers().frameOptions().disable().and()
                 .csrf().disable()
                 .authorizeRequests(auth -> {
                     auth.antMatchers("/api/admin").hasAuthority("ADMIN");
                     auth.antMatchers("/api/user").hasAnyAuthority("ADMIN", "USER");
-                    auth.antMatchers("/api/public", "/login").permitAll();
+                    auth.antMatchers("/api/public", "/login", "/h2-console/**").permitAll();
                     auth.anyRequest().authenticated();
                 })
                 .logout()

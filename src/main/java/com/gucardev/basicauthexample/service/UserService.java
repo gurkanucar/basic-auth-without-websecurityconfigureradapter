@@ -18,6 +18,10 @@ public class UserService {
     }
 
 
+    public User create(User user) {
+        return userRepository.save(user);
+    }
+
     public User findUserByUsername(String username) {
         return userRepository.findByUsername(username)
                 .orElseThrow(() -> new RuntimeException("user not found!"));

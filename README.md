@@ -34,3 +34,8 @@ Medium Article: [https://medium.com/@gurkanucar/spring-security-h2-database-with
 ```http
   GET /api/me
 ```
+
+
+### Res:
+[https://www.baeldung.com/spring-deprecated-websecurityconfigureradapter](https://www.baeldung.com/spring-deprecated-websecurityconfigureradapter)
+[https://spring.io/blog/2022/02/21/spring-security-without-the-websecurityconfigureradapter](https://spring.io/blog/2022/02/21/spring-security-without-the-websecurityconfigureradapter)

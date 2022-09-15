@@ -32,17 +32,14 @@ public class WebSecurityConfig {
     }
 
 
-
     @Bean
     InMemoryUserDetailsManager userDetailsManager() {
         UserDetails user1 = User.withUsername("ahmet")
                 .password(passwordEncoder.encode("pass"))
                 .authorities("ADMIN")
                 .build();
-
         return new InMemoryUserDetailsManager(user1);
     }
-
 
 //    @Bean
 //    public DaoAuthenticationProvider authProvider() {
@@ -71,7 +68,7 @@ public class WebSecurityConfig {
                 .authorizeRequests(auth -> {
                     auth.antMatchers("/api/admin").hasAuthority("ADMIN");
                     auth.antMatchers("/api/user").hasAnyAuthority("ADMIN", "USER");
-                   // auth.antMatchers("/api/public", "/h2-console/**").permitAll();
+                    // auth.antMatchers("/api/public", "/h2-console/**").permitAll();
                     auth.anyRequest().authenticated();
                 })
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
